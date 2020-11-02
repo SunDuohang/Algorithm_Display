@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ButtonActivity">
+
+    <Button
+        android:id="@+id/btn1_SelSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_SelSort"
+        android:textColor="#FF83FA"
+        android:textSize="20sp"
+        android:background="@drawable/bg_btn_select1"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/btn1_BubSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_BubSort"
+        android:textSize="20sp"
+        android:textColor="#FF83FA"
+        android:layout_below="@id/btn1_SelSort"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_btn_select1"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/btn1_InsSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_InsSort"
+        android:textSize="20sp"
+        android:textColor="#FF83FA"
+        android:layout_below="@id/btn1_BubSort"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_btn_select1"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/btn1_QuickSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_QuickSort"
+        android:textSize="20sp"
+        android:textColor="#FF83FA"
+        android:layout_below="@id/btn1_InsSort"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_btn_select1"
+        android:textAllCaps="false"/>
+    <Button
+        android:id="@+id/test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test"
+        android:textSize="20sp"
+        android:textColor="#FF83FA"
+        android:layout_below="@id/btn1_QuickSort"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_btn_select1"
+        android:textAllCaps="false"/>
+</RelativeLayout>
