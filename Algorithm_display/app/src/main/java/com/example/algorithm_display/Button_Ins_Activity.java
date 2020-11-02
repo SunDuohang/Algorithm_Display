@@ -53,7 +53,7 @@ public class Button_Ins_Activity extends AppCompatActivity {
         names.add("柱状一");
         names.add("柱状二");
         //创建多条柱状的图表
-        barChartManager1.showBarChart(xValues, yValues.get(0), names.get(0), colors.get(3));
+        barChartManager1.showBarChart(xValues, yValues.get(0), names.get(0), colors);
 
         btn_Ins_Ex = (Button) findViewById(R.id.btn_Ins_Ex);
         btn_Ins_Ex.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +80,7 @@ public class Button_Ins_Activity extends AppCompatActivity {
                         yValue.add(array[j]);
                     }
                     yValues.add(yValue);
-                    barChartManager1.showBarChart(xValues, yValues.get(0), names.get(0), colors.get(3), count);
+                    barChartManager1.showBarChart(xValues, yValues.get(0), names.get(0), colors, count);
                 }
             }
         });
