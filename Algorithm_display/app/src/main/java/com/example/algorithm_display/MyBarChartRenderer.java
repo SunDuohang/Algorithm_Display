@@ -19,7 +19,7 @@ import com.github.mikephil.charting.renderer.BarChartRenderer;
 import com.github.mikephil.charting.utils.Transformer;
 import com.github.mikephil.charting.utils.Utils;
 import com.github.mikephil.charting.utils.ViewPortHandler;
-
+//未调用，相关class，主要是对柱状图渐变色进行控制
 public class MyBarChartRenderer extends BarChartRenderer {
 
     private RectF mBarShadowRectBuffer = new RectF();
