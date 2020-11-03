@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.highlight.BarHighlighter;
+//在MyBarChartManger中进行调用，
 
 public class MyBarChart extends BarChart {
     public MyBarChart(Context context) {
