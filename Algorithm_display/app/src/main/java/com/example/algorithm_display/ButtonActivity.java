@@ -53,13 +53,13 @@ public class ButtonActivity extends AppCompatActivity{
             }
         });
 
-        btn_test = (Button) findViewById(R.id.test);
+        /*btn_test = (Button) findViewById(R.id.test);
         btn_test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ButtonActivity.this,test.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 }
