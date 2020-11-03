@@ -2,134 +2,137 @@ package com.example.algorithm_display;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.WindowManager;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.formatter.IAxisValueFormatter;
-import com.github.mikephil.charting.formatter.IValueFormatter;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
-import com.github.mikephil.charting.utils.ViewPortHandler;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//冒泡排序
 public class Button_Bub_Activity extends AppCompatActivity {
-    private BarChart barChart;
+
+    private Button btn_Bub_Ex;
+    private BarChart Bub_BarChart;
+    private  float array[] = new float[11];
+    private BarChartManager Bub_barChartManager ;
+    private ArrayList<Float> xValues = new ArrayList<>();
+    private List<String> names = new ArrayList<>();
+    private List<Integer> colors = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_button__bub_);
+        Bub_BarChart = findViewById(R.id.BubSort_Chart);
+        Bub_barChartManager = new BarChartManager(Bub_BarChart);
+        //设置x轴的数据
+        ArrayList<String> xValues0 = new ArrayList<>();
+        //设置x轴的数据
+        xValues = new ArrayList<>();
+        for (int i = 1; i < 12; i++) {
+            xValues.add((float) i);
+        }
+        //设置y轴的数据()
+        final List<List<Float>> yValues = new ArrayList<>();
+        List<Float> yValue = new ArrayList<>();
+        for (int i = 0; i < 11; i++){
+            array[i] = ((float) (Math.random() * 8) + 2);
+            yValue.add(array[i]);
+        }
+        yValues.add(yValue);
+        //颜色集合
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        initBarChart();
-    }
-    private void initBarChart(){
-        barChart = findViewById(R.id.BubSort_Chart);
-        barChart.getDescription().setEnabled(false); // 不显示描述
-        barChart.setExtraOffsets(20, 20, 20, 20); // 设置饼图的偏移量，类似于内边距 ，设置视图窗口大小
-        setAxis(); // 设置坐标轴
-        setLegend(); // 设置图例
-        setData();  // 设置数据
-    }
-    private void setData(){
-        List<IBarDataSet> sets = new ArrayList<>();
-        // 此处有两个DataSet，所以有两条柱子，BarEntry（）中的x和y分别表示显示的位置和高度
-        // x是横坐标，表示位置，y是纵坐标，表示高度
-        List<BarEntry> barEntries1 = new ArrayList<>();
-        barEntries1.add(new BarEntry(0, 390f));
-        barEntries1.add(new BarEntry(1, 1100f));
-        barEntries1.add(new BarEntry(2, 900f));
-        barEntries1.add(new BarEntry(3, 700f));
-        barEntries1.add(new BarEntry(4, 300f));
-        BarDataSet barDataSet1 = new BarDataSet(barEntries1, "");
-        barDataSet1.setValueTextColor(Color.RED); // 值的颜色
-        barDataSet1.setValueTextSize(15f); // 值的大小
-        barDataSet1.setColor(Color.parseColor("#1AE61A")); // 柱子的颜色
-        barDataSet1.setLabel("蔬菜"); // 设置标签之后，图例的内容默认会以设置的标签显示
-        // 设置柱子上数据显示的格式
-        barDataSet1.setValueFormatter(new IValueFormatter() {
-            @Override
-            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
-                return value + "斤";
-            }
+        colors.add(Color.CYAN);
+        colors.add(Color.RED);
 
-        });
+        //线的名字集合
+        names.add("柱状一");
+        names.add("柱状二");
+        //创建多条柱状的图表
+        Bub_barChartManager.showBarChart(xValues, yValues.get(0), names.get(0), colors,0,array[0]);
 
-        sets.add(barDataSet1);
+        btn_Bub_Ex = (Button) findViewById(R.id.btn_Bub_Ex);
+        btn_Bub_Ex.setOnClickListener(new View.OnClickListener() {
+            int count = 0;
 
-        List<BarEntry> barEntries2 = new ArrayList<>();
-        barEntries2.add(new BarEntry(0, 210f));
-        barEntries2.add(new BarEntry(1, 450f));
-        barEntries2.add(new BarEntry(2, 430f));
-        barEntries2.add(new BarEntry(3, 440f));
-        barEntries2.add(new BarEntry(4, 180f));
-        BarDataSet barDataSet2 = new BarDataSet(barEntries2, "");
-        // 不显示第二根柱子上的值
-        barDataSet2.setDrawValues(false); // 不显示值
-        barDataSet2.setColor(Color.parseColor("#F7F709"));
-        barDataSet2.setLabel("水果");
-        sets.add(barDataSet2);
+            public void onClick(View view) {
+                /*
+                if(count < array.length) {
+                    Toast.makeText(Button_Bub_Activity.this, "第" + (count+1) + "次遍历", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    Toast.makeText(Button_Bub_Activity.this, "排序已经完成！", Toast.LENGTH_SHORT).show();
+                */
+                count ++ ;
+                if(isSorted(array))
+                    Toast.makeText(Button_Bub_Activity.this, "排序完成", Toast.LENGTH_SHORT).show();
+                else {
 
-        BarData barData = new BarData(sets);
-        barData.setBarWidth(0.4f); // 设置柱子的宽度
-        barChart.setData(barData);
-    }
-    private void setLegend() {
-        Legend legend = barChart.getLegend();
-        legend.setFormSize(12f); // 图例的图形大小
-        legend.setTextSize(15f); // 图例的文字大小
-        legend.setDrawInside(true); // 设置图例在图中
-        legend.setOrientation(Legend.LegendOrientation.VERTICAL); // 图例的方向为垂直
-        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT); //显示位置，水平右对齐
-        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP); // 显示位置，垂直上对齐
-        // 设置水平与垂直方向的偏移量
-        legend.setYOffset(55f);
-        legend.setXOffset(30f);
-    }
+                    if (count >= 0 && count < array.length) {
+                        for (int j = 0; j < array.length - 1; j++) {
+                            if (array[j] > array[j + 1]) {
+                                float currentValue = array[j];
+                                array[j] = array[j + 1];
+                                array[j + 1] = currentValue;
+                                yValues.clear();
 
-    private void setAxis() {
-        // 设置x轴
-        XAxis xAxis = barChart.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);  // 设置x轴显示在下方，默认在上方
-        xAxis.setDrawGridLines(false); // 将此设置为true，绘制该轴的网格线。
-        xAxis.setLabelCount(5);  // 设置x轴上的标签个数
-        xAxis.setTextSize(15f); // x轴上标签的大小
-        final String labelName[] = {"周一", "周二", "周三", "周四", "周五"};
-        // 设置x轴显示的值的格式
-        xAxis.setValueFormatter(new IAxisValueFormatter() {
-            @Override
-            public String getFormattedValue(float value, AxisBase axis) {
-                if ((int) value < labelName.length) {
-                    return labelName[(int) value];
-                } else {
-                    return "";
+                                final int finalJ = j;
+                                new Thread() {
+                                    @Override
+                                    public void run() {
+                                        super.run();
+                                        try {
+                                            Thread.sleep(500);//休眠500毫秒
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
+                                        /**
+                                         * 要执行的操作
+                                         */
+                                        List<Float> yValue = new ArrayList<>();
+                                        for (int k = 0; k < array.length; k++) {
+                                            yValue.add(array[k]);
+                                        }
+                                        yValues.add(yValue);
+                                        Bub_barChartManager.showBarChart(xValues, yValues.get(0), names.get(0), colors, finalJ, array[finalJ]);
+                                    }
+                                }.start();
+
+                            }
+
+                        }
+                    }
                 }
             }
         });
-        xAxis.setYOffset(15); // 设置标签对x轴的偏移量，垂直方向
-
-        // 设置y轴，y轴有两条，分别为左和右
-        YAxis yAxis_right = barChart.getAxisRight();
-        yAxis_right.setAxisMaximum(1200f);  // 设置y轴的最大值
-        yAxis_right.setAxisMinimum(0f);  // 设置y轴的最小值
-        yAxis_right.setEnabled(false);  // 不显示右边的y轴
-
-        YAxis yAxis_left = barChart.getAxisLeft();
-        yAxis_left.setAxisMaximum(1200f);
-        yAxis_left.setAxisMinimum(0f);
-        yAxis_left.setTextSize(15f); // 设置y轴的标签大小
     }
-
-
+    public static boolean isSorted(float[] data) {
+        boolean flag1 = false,flag2 = false;
+        //数组是否为升序
+        for (int i = 0; i < data.length-1; i++) {
+            if (data[i] == Math.min(data[i], data[i + 1])) {
+                flag1 = true;
+            } else {
+                flag1 = false;
+                break;
+            }
+        }
+        //数组是否为降序
+        for (int i = 0; i < data.length - 1; i++) {
+            if (data[i] == Math.max(data[i], data[i + 1])) {
+                flag2 = true;
+            } else {
+                flag2 = false;
+                break;
+            }
+        }
+        if (flag1 || flag2) {
+            return true;//有一个为真，即是已经排过序了
+        } else {
+            return  false;
+        }
+    }
 }
