@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Algorithm_display</string>
+    <string name="tv_1">Thank you for using!</string>
+    <string name="entry_1">Sort Algorithm</string>
+    <string name="btn_SelSort">SelectSort</string>
+    <string name="btn_BubSort">BubbleSort</string>
+    <string name="btn_InsSort">InsertSort</string>
+    <string name="btn_QuickSort">QuickSort</string>
+    <string name="btn_sel_tv1">SelectSort</string>
+    <string name="btn_ins_tv1">InsertSort</string>
+    <string name="btn_bub_tv1">BubbleSort</string>
+    <string name="btn_quick_tv1">QuickSort</string>
+    <string name="btn_sort_ex">执行一次遍历循环</string>
+</resources>
