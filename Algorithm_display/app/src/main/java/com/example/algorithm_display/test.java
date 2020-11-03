@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//测试用例
 public class test extends AppCompatActivity {
     private Button btn_Ins_Ex;
     private MyBarChart barChart1;
