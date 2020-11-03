@@ -15,7 +15,7 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//未调用，主要是为了柱状图渐变色调用
 public class MyBarChartManager {
     private MyBarChart mBarChart;
     private YAxis leftAxis;
@@ -138,7 +138,7 @@ public class MyBarChartManager {
             entries.add(new BarEntry(xAxisValues.get(i), yAxisValues.get(i)));
         }
         // 每一个BarDataSet代表一类柱状图
-        MyBarDataSet barDataSet = new MyBarDataSet(entries, label,target);
+        MyBarDataSet barDataSet = new MyBarDataSet(entries, label);
         barDataSet.setColors(color);
         barDataSet.setValueTextSize(9f);
         barDataSet.setFormLineWidth(1f);
