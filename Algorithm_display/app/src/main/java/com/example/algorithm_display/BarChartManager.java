@@ -134,13 +134,13 @@ public class BarChartManager {
     *
     *
     * */
-    public void showBarChart(List<Float> xAxisValues, List<Float> yAxisValues, String label, List<Integer> color,int count) {
+    public void showBarChart(List<Float> xAxisValues, List<Float> yAxisValues, String label, List<Integer> color,int count, float target) {
         ArrayList<BarEntry> entries = new ArrayList<>();
         for (int i = 0; i < xAxisValues.size(); i++) {
             entries.add(new BarEntry(xAxisValues.get(i), yAxisValues.get(i)));
         }
         // 每一个BarDataSet代表一类柱状图
-        MyBarDataSet barDataSet = new MyBarDataSet(entries, label);
+        MyBarDataSet barDataSet = new MyBarDataSet(entries, label,target);
 
         barDataSet.setColors(color);
         barDataSet.setValueTextSize(9f);
@@ -149,29 +149,6 @@ public class BarChartManager {
 
         ArrayList<IBarDataSet> dataSets = new ArrayList<>();
         dataSets.add(barDataSet);
-
-        ArrayList<BarEntry> entries1 = new ArrayList<>();
-        entries1.add(new BarEntry(xAxisValues.get(count), yAxisValues.get(count)));
-        MyBarDataSet barDataSet1 = new MyBarDataSet(entries1, "待换元素");
-
-        barDataSet1.setColors(color);
-        barDataSet1.setValueTextSize(9f);
-        barDataSet1.setFormLineWidth(1f);
-        barDataSet1.setFormSize(15.f);
-        dataSets.add(barDataSet1);
-
-        ArrayList<BarEntry> entries2 = new ArrayList<>();
-        for (int i = 0; i < xAxisValues.size(); i++) {
-            entries2.add(new BarEntry(xAxisValues.get(i), yAxisValues.get(i)));
-        }
-        // 每一个BarDataSet代表一类柱状图
-        MyBarDataSet barDataSet2 = new MyBarDataSet(entries2, label);
-
-        barDataSet2.setColors(color);
-        barDataSet2.setValueTextSize(9f);
-        barDataSet2.setFormLineWidth(1f);
-        barDataSet2.setFormSize(15.f);
-        dataSets.add(barDataSet2);
 
         BarData data = new BarData(dataSets);
         //设置X轴的刻度数
